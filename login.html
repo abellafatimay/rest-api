@@ -38,17 +38,16 @@
                 }
 
                 const result = await response.json();
-                document.getElementById('response').innerText = JSON.stringify(result, null, 2);
-
                 if (result.token) {
                     localStorage.setItem('token', result.token);
-                    alert('Login successful! Token saved.');
+                    alert('Login successful! Redirecting...');
+                    window.location.href = 'dashboard.html'; // Redirect to dashboard or another page
                 } else if (result.error) {
                     alert(`Error: ${result.error}`);
                 }
             } catch (error) {
                 console.error('Error:', error);
-                document.getElementById('response').innerText = 'An error occurred. Please check the console for details.';
+                document.getElementById('response').innerText = 'An unexpected error occurred. Please check the console for details.';
             }
         });
     </script>
